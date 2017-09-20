@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <import type="android.view.View" alias="View"/>
+    </data>
+
+    <android.support.design.widget.AppBarLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ablAppBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:theme="@style/AppTheme.NoActionBar.AppBarOverlay">
+
+        <LinearLayout
+            android:id="@+id/llToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:elevation="4dp"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlayLight" />
+
+        <View
+            android:id="@+id/vBottomShadowCompat"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/shadow_size_compat"
+            android:background="@drawable/bottom_shadow"
+            android:visibility="@{@dimen/shadow_size_compat == 0 ? View.GONE : View.VISIBLE}"/>
+
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+</layout>

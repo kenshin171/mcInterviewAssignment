@@ -1,0 +1,35 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- colorPrimary is used for the default action bar background -->
+        <item name="colorPrimary">@android:color/transparent</item>
+
+        <!-- colorPrimaryDark is used for the status bar -->
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+
+        <!-- colorAccent is used as the default value for colorControlActivated which is used to tint widgets -->
+        <item name="colorAccent">@android:color/transparent</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.AppBarOverlayLight" parent="ThemeOverlay.AppCompat.ActionBar" />
+
+    <style name="AppTheme.NoActionBar.PopupOverlayLight" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
+
+</resources>
