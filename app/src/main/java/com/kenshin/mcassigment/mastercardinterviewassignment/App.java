@@ -2,12 +2,10 @@ package com.kenshin.mcassigment.mastercardinterviewassignment;
 
 import android.app.Activity;
 import android.app.Application;
-import android.app.Service;
 import android.content.Context;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.support.v4.BuildConfig;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -24,16 +22,12 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
-import dagger.android.HasServiceInjector;
-import dagger.android.support.HasSupportFragmentInjector;
 
 /**
  * Created by kennethleong on 20/9/17.
  */
 
-public class App extends Application implements HasActivityInjector,
-        HasServiceInjector,
-        HasSupportFragmentInjector
+public class App extends Application implements HasActivityInjector
 {
 
     private static final String TAG = "App";
@@ -43,25 +37,9 @@ public class App extends Application implements HasActivityInjector,
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingAndroidActivityInjector;
 
-    @Inject
-    DispatchingAndroidInjector<Service> dispatchingAndroidServiceInjector;
-
-    @Inject
-    DispatchingAndroidInjector<Fragment> dispatchingAndroidFragmentInjector;
-
-    @Override
-    public AndroidInjector<Fragment> supportFragmentInjector() {
-        return dispatchingAndroidFragmentInjector;
-    }
-
     @Override
     public AndroidInjector<Activity> activityInjector() {
         return dispatchingAndroidActivityInjector;
-    }
-
-    @Override
-    public AndroidInjector<Service> serviceInjector() {
-        return dispatchingAndroidServiceInjector;
     }
 
     @Override

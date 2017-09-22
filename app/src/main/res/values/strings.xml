@@ -1,6 +1,21 @@
 <resources>
     <string name="app_name">MasterCardInterviewAssignment</string>
-    <string name="endpoint">http://localhost:8080</string>
+    <string name="endpoint">http://192.168.1.105:8080</string>
     <string name="currency_item_text">%1$s - %2$s</string>
+    <string name="currency_db_name">currencies</string>
 
+    <string name="option_search">search</string>
+    <string name="no_search_results">No Search Results!</string>
+    <string name="main_activity_title">Currency Converter</string>
+    <string name="search_activity_title">Currency (%1$s)</string>
+    <string name="i_have">I have</string>
+    <string name="i_want">I want</string>
+
+    <string name="have">Have</string>
+    <string name="want">Want</string>
+
+    <string name="currency_convert">%1$d %2$s = %3$f %4$s</string>
+
+    <string name="select_have_cur">Touch here to select the currency you <b>have</b></string>
+    <string name="currency_i_want">Touch here to select the currency you <b>want</b></string>
 </resources>

@@ -1,6 +1,7 @@
 package com.kenshin.mcassigment.mastercardinterviewassignment.activity;
 
 import android.app.Activity;
+import android.arch.lifecycle.Lifecycle;
 import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
@@ -10,6 +11,7 @@ import android.os.IBinder;
 import android.support.transition.Transition;
 import android.support.transition.TransitionManager;
 import android.support.v4.util.ArrayMap;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -18,7 +20,8 @@ import android.view.ViewGroup;
 
 import com.evernote.android.state.StateSaver;
 import com.kenshin.mcassigment.mastercardinterviewassignment.App;
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle;
+import com.trello.rxlifecycle2.LifecycleProvider;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
@@ -32,7 +35,10 @@ import dagger.android.AndroidInjection;
  * Created by kennethleong on 20/9/17.
  */
 
-public abstract class BaseActivity extends RxAppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
+
+    final LifecycleProvider<Lifecycle.Event> provider
+            = AndroidLifecycle.createLifecycleProvider(this);
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);

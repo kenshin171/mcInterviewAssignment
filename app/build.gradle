@@ -40,9 +40,10 @@ android {
 
                 arguments = [
                         //Issue warnings instead of compiler errors.
-                        'com.groupon.android.dichecks.duplicateCheck.failOnError' : 'true',
+                        'com.groupon.android.dichecks.duplicateCheck.failOnError': 'true',
                         //Enable or disable check completely.
-                        'com.groupon.android.dichecks.duplicateCheck.enabled' : 'true'
+                        'com.groupon.android.dichecks.duplicateCheck.enabled'    : 'true',
+                        "room.schemaLocation"                                    : "$projectDir/schemas".toString()
                 ]
             }
         }
@@ -50,8 +51,23 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            applicationIdSuffix '.debug'
+            shrinkResources false
+            minifyEnabled true
+            useProguard false
+            debuggable true
+            aaptOptions.cruncherEnabled = false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'shrinker-rules.pro'
+        }
+
         release {
-            minifyEnabled false
+            shrinkResources true
+            minifyEnabled true
+            useProguard true
+            debuggable false
+            aaptOptions.cruncherEnabled = true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -77,10 +93,13 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+
     implementation "com.google.dagger:dagger:$dagger2Version"
     implementation "com.google.dagger:dagger-android:$dagger2Version"
     implementation "com.google.dagger:dagger-android-support:$dagger2Version"
 
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger2Version"
     annotationProcessor "com.google.dagger:dagger-android-processor:$dagger2Version"
 
@@ -96,9 +115,10 @@ dependencies {
     implementation "com.evernote:android-state:$stateSaverVersion"
     annotationProcessor "com.evernote:android-state-processor:$stateSaverVersion"
 
-    implementation "android.arch.lifecycle:runtime:$androidArchComponentsVersion"
+    implementation "android.arch.lifecycle:runtime:$androidArchComponentsLifecycleVersion"
     implementation "android.arch.lifecycle:extensions:$androidArchComponentsVersion"
-    annotationProcessor "android.arch.lifecycle:compiler:$androidArchComponentsVersion"
+    implementation "android.arch.lifecycle:common-java8:$androidArchComponentsVersion"
+
 
     implementation "android.arch.persistence.room:runtime:$androidArchComponentsVersion"
     annotationProcessor "android.arch.persistence.room:compiler:$androidArchComponentsVersion"
@@ -119,8 +139,8 @@ dependencies {
     debugImplementation "com.facebook.stetho:stetho:$stethoVersion"
 
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
-    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
-    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
+//    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
+//    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
 
     // RxJava Libraries
     implementation "io.reactivex.rxjava2:rxandroid:$rxAndroid2Version"
@@ -153,12 +173,12 @@ dependencies {
 
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
-    implementation ("com.github.bumptech.glide:okhttp3-integration:$glideVersion"){
+    implementation("com.github.bumptech.glide:okhttp3-integration:$glideVersion") {
         exclude group: 'glide-parent'
+//        transitive = false
     }
 
-    implementation "com.github.bumptech.glide:recyclerview-integration:$glideVersion@aar"
-    implementation "com.github.bumptech.glide:okhttp3-integration:$glideVersion@aar"
+//    implementation "com.github.bumptech.glide:okhttp3-integration:$glideVersion@aar"
 
     annotationProcessor "com.groupon.android.dichecks:compiler:1.0.2"
 

@@ -1,7 +1,6 @@
 package com.kenshin.mcassigment.mastercardinterviewassignment.di.module;
 
-import android.app.Application;
-
+import com.kenshin.mcassigment.mastercardinterviewassignment.App;
 import com.kenshin.mcassigment.mastercardinterviewassignment.R;
 import com.kenshin.mcassigment.mastercardinterviewassignment.retrofitService.RetroFitService;
 
@@ -35,7 +34,7 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    public Retrofit provideRestAdapter(Application application, OkHttpClient okHttpClient) {
+    public Retrofit provideRestAdapter(App application, OkHttpClient okHttpClient) {
         Retrofit.Builder builder = new Retrofit.Builder();
         builder.client(okHttpClient)
                 //baseURL always end wth /

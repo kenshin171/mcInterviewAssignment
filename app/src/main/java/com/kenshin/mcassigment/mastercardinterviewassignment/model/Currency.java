@@ -1,29 +1,37 @@
 package com.kenshin.mcassigment.mastercardinterviewassignment.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 /**
  * Created by kennethleong on 20/9/17.
  */
 
+@Entity
 public class Currency implements Parcelable {
 
+    @PrimaryKey
+    @ColumnInfo(name = "code")
+    @NonNull
     private String code;
+
+    @ColumnInfo(name = "country")
     private String country;
+
+    @ColumnInfo(name = "name")
     private String name;
+
+    @ColumnInfo(name = "flagPath")
     private String flagPath;
-    private String rate;
+
+    @ColumnInfo(name = "rate")
+    private float rate;
 
     public Currency() {
-    }
-
-    public Currency(String code, String country, String name, String flagPath, String rate) {
-        this.code = code;
-        this.country = country;
-        this.name = name;
-        this.flagPath = flagPath;
-        this.rate = rate;
     }
 
     public String getCode() {
@@ -58,11 +66,11 @@ public class Currency implements Parcelable {
         this.flagPath = flagPath;
     }
 
-    public String getRate() {
+    public float getRate() {
         return rate;
     }
 
-    public void setRate(String rate) {
+    public void setRate(float rate) {
         this.rate = rate;
     }
 
@@ -74,11 +82,11 @@ public class Currency implements Parcelable {
 
         Currency currency = (Currency) o;
 
-        return getCode().equals(currency.getCode()) &&
+        return Float.compare(currency.getRate(), getRate()) == 0 &&
+                getCode().equals(currency.getCode()) &&
                 getCountry().equals(currency.getCountry()) &&
                 getName().equals(currency.getName()) &&
-                getFlagPath().equals(currency.getFlagPath()) &&
-                getRate().equals(currency.getRate());
+                getFlagPath().equals(currency.getFlagPath());
     }
 
     @Override
@@ -87,7 +95,7 @@ public class Currency implements Parcelable {
         result = 31 * result + getCountry().hashCode();
         result = 31 * result + getName().hashCode();
         result = 31 * result + getFlagPath().hashCode();
-        result = 31 * result + getRate().hashCode();
+        result = 31 * result + (getRate() != +0.0f ? Float.floatToIntBits(getRate()) : 0);
         return result;
     }
 
@@ -102,7 +110,7 @@ public class Currency implements Parcelable {
         dest.writeString(this.country);
         dest.writeString(this.name);
         dest.writeString(this.flagPath);
-        dest.writeString(this.rate);
+        dest.writeFloat(this.rate);
     }
 
     protected Currency(Parcel in) {
@@ -110,10 +118,10 @@ public class Currency implements Parcelable {
         this.country = in.readString();
         this.name = in.readString();
         this.flagPath = in.readString();
-        this.rate = in.readString();
+        this.rate = in.readFloat();
     }
 
-    public static final Parcelable.Creator<Currency> CREATOR = new Parcelable.Creator<Currency>() {
+    public static final Creator<Currency> CREATOR = new Creator<Currency>() {
         @Override
         public Currency createFromParcel(Parcel source) {
             return new Currency(source);

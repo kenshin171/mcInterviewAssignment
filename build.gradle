@@ -10,7 +10,6 @@ buildscript {
         maven { url "https://clojars.org/repo/" }
         maven { url 'https://maven.fabric.io/public' }
         maven { url "https://jitpack.io" }
-        maven { url "https://dl.bintray.com/drummer-aidan/maven" }
         flatDir {
             dirs 'libs'
         }
@@ -33,7 +32,6 @@ allprojects {
         maven { url "https://clojars.org/repo/" }
         maven { url 'https://maven.fabric.io/public' }
         maven { url "https://jitpack.io" }
-        maven { url "https://dl.bintray.com/drummer-aidan/maven" }
         flatDir {
             dirs 'libs'
         }

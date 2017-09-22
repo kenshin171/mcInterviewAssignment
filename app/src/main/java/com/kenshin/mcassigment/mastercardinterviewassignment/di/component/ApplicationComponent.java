@@ -2,6 +2,7 @@ package com.kenshin.mcassigment.mastercardinterviewassignment.di.component;
 
 import com.kenshin.mcassigment.mastercardinterviewassignment.App;
 import com.kenshin.mcassigment.mastercardinterviewassignment.di.androidInjectorModule.activityInjectorModule.MainActivityInjectorModule;
+import com.kenshin.mcassigment.mastercardinterviewassignment.di.androidInjectorModule.activityInjectorModule.SearchActivityInjectorModule;
 import com.kenshin.mcassigment.mastercardinterviewassignment.di.module.AppModule;
 import com.kenshin.mcassigment.mastercardinterviewassignment.di.module.BusModule;
 import com.kenshin.mcassigment.mastercardinterviewassignment.di.module.DataModule;
@@ -17,7 +18,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
  */
 
 @Singleton
-@Component(modules = {MainActivityInjectorModule.class,
+@Component(modules = {SearchActivityInjectorModule.class,
+                        MainActivityInjectorModule.class,
 
                         AndroidSupportInjectionModule.class,
 

@@ -1,15 +1,18 @@
 package com.kenshin.mcassigment.mastercardinterviewassignment.adapter;
 
 import android.databinding.DataBindingUtil;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.kenshin.mcassigment.mastercardinterviewassignment.R;
+import com.kenshin.mcassigment.mastercardinterviewassignment.adapter.difUtil.CurrencyListDiffUtil;
 import com.kenshin.mcassigment.mastercardinterviewassignment.databinding.LayoutCurrencyItemBinding;
 import com.kenshin.mcassigment.mastercardinterviewassignment.model.Currency;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,10 +21,20 @@ import java.util.List;
 
 public class CurrencyListAdapter extends RecyclerView.Adapter<CurrencyListAdapter.ViewHolder> {
 
+    public interface OnItemClickListener {
+        void onItemClick(Currency item);
+    }
+
+    private OnItemClickListener mListener;
     private List<Currency> mDataSet;
 
     public CurrencyListAdapter(List<Currency> mDataSet) {
-        this.mDataSet = mDataSet;
+        this.mDataSet = null != mDataSet ? mDataSet : new ArrayList<>(0);
+        hasStableIds();
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mListener = listener;
     }
 
     @Override
@@ -38,13 +51,15 @@ public class CurrencyListAdapter extends RecyclerView.Adapter<CurrencyListAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.binding.setCurrency(mDataSet.get(position));
+        Currency item = mDataSet.get(position);
 
+        holder.binding.setCurrency(item);
+        holder.binding.getRoot().setTag(item);
     }
 
     @Override
     public long getItemId(int position) {
-        return mDataSet.get(position).hashCode();
+        return mDataSet.get(position).getCode().hashCode();
     }
 
     @Override
@@ -69,8 +84,24 @@ public class CurrencyListAdapter extends RecyclerView.Adapter<CurrencyListAdapte
 
         @Override
         public void onClick(View v) {
-
-
+            if(null != mListener) {
+                Currency clickedItem = (Currency) v.getTag();
+                mListener.onItemClick(clickedItem);
+            }
         }
     }
+
+    public void updateList(List<Currency> newList) {
+        if(null != newList && !newList.isEmpty()) {
+            DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new CurrencyListDiffUtil(this.mDataSet, newList), true);
+            this.mDataSet.clear();
+            this.mDataSet.addAll(newList);
+            diffResult.dispatchUpdatesTo(this);
+        } else {
+            int size = this.mDataSet.size();
+            this.mDataSet.clear();
+            notifyItemRangeRemoved(0, size);
+        }
+    }
+
 }

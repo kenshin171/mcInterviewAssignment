@@ -1,6 +1,6 @@
 package com.kenshin.mcassigment.mastercardinterviewassignment.di.androidInjectorModule.activityInjectorModule;
 
-import com.kenshin.mcassigment.mastercardinterviewassignment.activity.MainActivity;
+import com.kenshin.mcassigment.mastercardinterviewassignment.activity.SearchActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -10,9 +10,9 @@ import dagger.android.ContributesAndroidInjector;
  */
 
 @Module
-public abstract class MainActivityInjectorModule {
+public abstract class SearchActivityInjectorModule {
 
     @ContributesAndroidInjector
-    public abstract MainActivity contributeMainActivityInjector();
+    public abstract SearchActivity contributeSearchActivityInjector();
 
 }

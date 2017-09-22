@@ -4,7 +4,8 @@ ext {
     dagger2Version = "2.11"
     constraintLayoutVersion = "1.1.0-beta1"
     stateSaverVersion = "1.1.5"
-    androidArchComponentsVersion = "1.0.0-alpha9-1"
+    androidArchComponentsVersion = "1.0.0-beta1"
+    androidArchComponentsLifecycleVersion = "1.0.0"
     kotlin_version = '1.1.4-3'
 
     // Debug and Testing Lib versions

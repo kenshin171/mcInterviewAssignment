@@ -14,11 +14,31 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!-- colorPrimary is used for the default action bar background -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+
+        <!-- colorPrimaryDark is used for the status bar -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+        <!-- colorAccent is used as the default value for colorControlActivated which is used to tint widgets -->
+        <item name="colorAccent">@color/colorAccent</item>
+
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="actionModeStyle">@style/Widget.ActionMode</item>
     </style>
+
+    <style name="Widget.ActionMode" parent="@style/Widget.AppCompat.ActionMode">
+        <item name="background">@color/colorPrimary</item>
+        <item name="actionModeBackground">@color/colorPrimary</item>
+        <item name="actionModeCloseDrawable">@drawable/ic_close</item>
+    </style>
+
 
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@android:color/black</item>
