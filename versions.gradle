@@ -34,4 +34,6 @@ ext {
 
     // Custom views
     glideVersion = "4.1.1"
+    currencyEditTextVersion = "2.0.1"
+
 }

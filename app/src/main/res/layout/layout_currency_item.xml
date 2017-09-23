@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
         app:cardCornerRadius="10dp"
-        android:background="?selectableItemBackground">
+        android:foreground="?selectableItemBackground">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"

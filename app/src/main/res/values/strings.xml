@@ -6,6 +6,8 @@
 
     <string name="option_search">search</string>
     <string name="no_search_results">No Search Results!</string>
+    <string name="error_occurred">Error occurred! : %1$s</string>
+
     <string name="main_activity_title">Currency Converter</string>
     <string name="search_activity_title">Currency (%1$s)</string>
     <string name="i_have">I have</string>

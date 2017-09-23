@@ -104,11 +104,7 @@ public class SearchActivity extends BaseActivity implements ActionMode.Callback,
 
         RxSwipeRefreshLayout.refreshes(binding.srlSwipeContainer)
                 .compose(provider.bindToLifecycle())
-                .subscribe(Void -> {
-
-                    viewModel.searchDB("");
-
-                });
+                .subscribe(Void -> viewModel.searchDB(searchText));
     }
 
     @Override
@@ -118,14 +114,32 @@ public class SearchActivity extends BaseActivity implements ActionMode.Callback,
 
             binding.srlSwipeContainer.setRefreshing(false);
 
-            if(!searchMode)
+            if(!searchMode) {
                 binding.clpbLoading.setVisibility(null != newList ? View.GONE : View.VISIBLE);
+                binding.rvCurrencyList.setVisibility(View.VISIBLE);
+            }
             else {
                 binding.clpbLoading.setVisibility(View.GONE);
                 binding.tvNoSearchResult.setVisibility(null == newList || newList.isEmpty() ? View.VISIBLE : View.GONE);
             }
 
             adapter.updateList(newList);
+        });
+
+        viewModel.getErrorNotifier().observe(this, error -> {
+
+            if(TextUtils.isEmpty(error)) {
+                binding.tvErrorOccurred.setVisibility(View.GONE);
+                binding.rvCurrencyList.setVisibility(View.VISIBLE);
+            }
+            else {
+                binding.rvCurrencyList.setVisibility(View.GONE);
+                binding.tvNoSearchResult.setVisibility(View.GONE);
+                binding.clpbLoading.setVisibility(View.GONE);
+                binding.tvErrorOccurred.setVisibility(View.VISIBLE);
+                binding.tvErrorOccurred.setText(getString(R.string.error_occurred, error));
+            }
+
         });
 
         if(searchMode) {
@@ -210,7 +224,7 @@ public class SearchActivity extends BaseActivity implements ActionMode.Callback,
         searchDisposable.dispose();
         viewModel.searchDB("");
         searchMode = false;
-        searchText = "";
+        searchText = null;
         binding.srlSwipeContainer.setRefreshing(false);
         binding.srlSwipeContainer.setEnabled(true);
     }

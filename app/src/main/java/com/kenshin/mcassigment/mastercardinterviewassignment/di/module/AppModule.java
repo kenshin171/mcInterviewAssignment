@@ -3,6 +3,7 @@ package com.kenshin.mcassigment.mastercardinterviewassignment.di.module;
 import com.kenshin.mcassigment.mastercardinterviewassignment.App;
 import com.kenshin.mcassigment.mastercardinterviewassignment.database.CurrencyDatabase;
 import com.kenshin.mcassigment.mastercardinterviewassignment.retrofitService.RetroFitService;
+import com.kenshin.mcassigment.mastercardinterviewassignment.viewModel.providerFactory.MainActvityVMproviderFactory;
 import com.kenshin.mcassigment.mastercardinterviewassignment.viewModel.providerFactory.SearchActvityVMproviderFactory;
 
 import javax.inject.Named;
@@ -37,6 +38,13 @@ public class AppModule {
             @Named(CURRENCY_DB) CurrencyDatabase currencyDatabase,
             RetroFitService retroFitService) {
         return new SearchActvityVMproviderFactory(currencyDatabase, retroFitService);
+    }
+
+    @Singleton
+    @Provides
+    @Named("MainActivityVMFactory")
+    MainActvityVMproviderFactory provideMainActivityViewModelFactory(RetroFitService retroFitService) {
+        return new MainActvityVMproviderFactory(retroFitService);
     }
 
 }

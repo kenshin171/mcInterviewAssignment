@@ -9,7 +9,7 @@ import com.kenshin.mcassigment.mastercardinterviewassignment.viewModel.SearchAct
 /**
  * Created by kennethleong on 22/9/17.
  */
-public class SearchActvityVMproviderFactory implements ViewModelProvider.Factory{
+public class SearchActvityVMproviderFactory implements ViewModelProvider.Factory {
 
     private CurrencyDatabase currencyDatabase;
     private RetroFitService retroFitService;
