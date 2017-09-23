@@ -9,7 +9,6 @@ import android.support.v4.BuildConfig;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.facebook.stetho.Stetho;
 import com.kenshin.mcassigment.mastercardinterviewassignment.di.component.DaggerApplicationComponent;
 import com.kenshin.mcassigment.mastercardinterviewassignment.di.module.AppModule;
 import com.kenshin.mcassigment.mastercardinterviewassignment.di.module.BusModule;
@@ -66,7 +65,7 @@ public class App extends Application implements HasActivityInjector
         }
         LeakCanary.install(this);
 
-        Stetho.initializeWithDefaults(this);
+//        Stetho.initializeWithDefaults(this);
 
     }
 

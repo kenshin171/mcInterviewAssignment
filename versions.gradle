@@ -15,7 +15,7 @@ ext {
     testRunner = "0.6-alpha"
     testUiAutomatorVersion = "2.1.2"
     stethoVersion = "1.5.0"
-    leakCanaryVersion = "1.5.2"
+    leakCanaryVersion = "1.5.4"
 
     // RxJava Libraries
     rxBinding = "2.0.0"

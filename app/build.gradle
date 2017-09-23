@@ -1,6 +1,5 @@
 apply from: '../versions.gradle'
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
 
 // For databinding error logs reporting
 gradle.projectsEvaluated {
@@ -54,11 +53,11 @@ android {
 
         debug {
             applicationIdSuffix '.debug'
-            shrinkResources false
+            shrinkResources true
             minifyEnabled true
-            useProguard false
+            useProguard true
             debuggable true
-            aaptOptions.cruncherEnabled = false
+            aaptOptions.cruncherEnabled = true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'shrinker-rules.pro'
         }
 
@@ -93,8 +92,6 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
-
     implementation "com.google.dagger:dagger:$dagger2Version"
     implementation "com.google.dagger:dagger-android:$dagger2Version"
     implementation "com.google.dagger:dagger-android-support:$dagger2Version"
@@ -117,8 +114,8 @@ dependencies {
 
     implementation "android.arch.lifecycle:runtime:$androidArchComponentsLifecycleVersion"
     implementation "android.arch.lifecycle:extensions:$androidArchComponentsVersion"
+    implementation "android.arch.lifecycle:common:1.0.1"
     implementation "android.arch.lifecycle:common-java8:$androidArchComponentsVersion"
-
 
     implementation "android.arch.persistence.room:runtime:$androidArchComponentsVersion"
     annotationProcessor "android.arch.persistence.room:compiler:$androidArchComponentsVersion"

@@ -4,14 +4,13 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.NonNull;
 
 import com.kenshin.mcassigment.mastercardinterviewassignment.App;
 import com.kenshin.mcassigment.mastercardinterviewassignment.database.CurrencyDatabase;
 import com.kenshin.mcassigment.mastercardinterviewassignment.model.Currency;
 import com.kenshin.mcassigment.mastercardinterviewassignment.retrofitService.RetroFitService;
 import com.kenshin.mcassigment.mastercardinterviewassignment.util.CommonUtility;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -46,7 +45,7 @@ public class SearchActivityViewModel extends ViewModel {
         getCurrencyListFromSources();
     }
 
-    private void getCurrencyListFromSources() {
+    public void getCurrencyListFromSources() {
 
         //get currencies from local db, it empty fetch from server
         maybeListCallback = currencyDatabase.currencyDao().getAllMaybe()
@@ -91,7 +90,7 @@ public class SearchActivityViewModel extends ViewModel {
      * Performs a SQLite query search on currency name and currency code
      * @param searchText String Search term
      */
-    public void searchDB(@NotNull CharSequence searchText) {
+    public void searchDB(@NonNull CharSequence searchText) {
         if(null != getCurrencyList().getValue()) {
             searchListCallback = currencyDatabase.currencyDao().searchDB("%" + searchText + "%")
                     .subscribeOn(Schedulers.io())

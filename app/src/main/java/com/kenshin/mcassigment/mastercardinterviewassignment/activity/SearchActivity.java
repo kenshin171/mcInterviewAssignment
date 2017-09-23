@@ -16,8 +16,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.evernote.android.state.State;
-import com.jakewharton.rxbinding2.support.v4.widget.RxSwipeRefreshLayout;
 import com.jakewharton.rxbinding2.support.v7.widget.RxSearchView;
+import com.jakewharton.rxbinding2.view.RxView;
 import com.kenshin.mcassigment.mastercardinterviewassignment.App;
 import com.kenshin.mcassigment.mastercardinterviewassignment.R;
 import com.kenshin.mcassigment.mastercardinterviewassignment.adapter.CurrencyListAdapter;
@@ -102,17 +102,18 @@ public class SearchActivity extends BaseActivity implements ActionMode.Callback,
         adapter.setOnItemClickListener(this);
         binding.rvCurrencyList.setAdapter(adapter);
 
-        RxSwipeRefreshLayout.refreshes(binding.srlSwipeContainer)
+        RxView.clicks(binding.btnRetry)
                 .compose(provider.bindToLifecycle())
-                .subscribe(Void -> viewModel.searchDB(searchText));
+                .subscribe(View -> {
+                    viewModel.getCurrencyListFromSources();
+                });
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         viewModel.getCurrencyList().observe(this, newList -> {
-
-            binding.srlSwipeContainer.setRefreshing(false);
 
             if(!searchMode) {
                 binding.clpbLoading.setVisibility(null != newList ? View.GONE : View.VISIBLE);
@@ -129,14 +130,14 @@ public class SearchActivity extends BaseActivity implements ActionMode.Callback,
         viewModel.getErrorNotifier().observe(this, error -> {
 
             if(TextUtils.isEmpty(error)) {
-                binding.tvErrorOccurred.setVisibility(View.GONE);
+                binding.llErrorLayout.setVisibility(View.GONE);
                 binding.rvCurrencyList.setVisibility(View.VISIBLE);
             }
             else {
                 binding.rvCurrencyList.setVisibility(View.GONE);
                 binding.tvNoSearchResult.setVisibility(View.GONE);
                 binding.clpbLoading.setVisibility(View.GONE);
-                binding.tvErrorOccurred.setVisibility(View.VISIBLE);
+                binding.llErrorLayout.setVisibility(View.VISIBLE);
                 binding.tvErrorOccurred.setText(getString(R.string.error_occurred, error));
             }
 
@@ -166,8 +167,6 @@ public class SearchActivity extends BaseActivity implements ActionMode.Callback,
 
             case R.id.action_search :
                 searchMode = true;
-                binding.srlSwipeContainer.setRefreshing(false);
-                binding.srlSwipeContainer.setEnabled(false);
                 startSupportActionMode(this);
                 break;
         }
@@ -225,8 +224,6 @@ public class SearchActivity extends BaseActivity implements ActionMode.Callback,
         viewModel.searchDB("");
         searchMode = false;
         searchText = null;
-        binding.srlSwipeContainer.setRefreshing(false);
-        binding.srlSwipeContainer.setEnabled(true);
     }
 
     @Override

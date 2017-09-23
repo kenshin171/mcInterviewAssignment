@@ -27,19 +27,31 @@
                 app:setGlideDrawableCircle="@{currency.flagPath}"/>
 
             <TextView
-                android:id="@+id/tvCtyCodeCtyName"
+                android:id="@+id/tvCtyCode"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:textAppearance="?android:textAppearanceLarge"
                 app:layout_constraintStart_toEndOf="@id/ivCountryFlag"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                android:text="@{@string/currency_item_text(currency.code)}"
+                tools:text="AED - "/>
+
+            <TextView
+                android:id="@+id/tvCtyName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceLarge"
+                app:layout_constraintStart_toEndOf="@id/tvCtyCode"
                 app:layout_constraintEnd_toStartOf="@+id/ivChevron"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintVertical_bias="0.5"
-                android:text="@{@string/currency_item_text(currency.code, currency.name)}"
-                tools:text="AED - UAW Dirham"/>
+                android:text="@{currency.name}"
+                tools:text="UAW Dirham"/>
 
             <ImageView
                 android:id="@+id/ivChevron"

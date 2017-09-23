@@ -10,23 +10,12 @@
 
         <include android:id="@+id/incToolbar" layout="@layout/layout_toolbar"/>
 
-        <android.support.v4.widget.SwipeRefreshLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/srlSwipeContainer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:enabled="true"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvCurrencyList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical"/>
-
-        </android.support.v4.widget.SwipeRefreshLayout>
+            android:scrollbars="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
         <android.support.v4.widget.ContentLoadingProgressBar
             android:id="@+id/clpbLoading"
@@ -46,15 +35,31 @@
             android:visibility="gone"
             android:text="@string/no_search_results"/>
 
-        <TextView
-            android:id="@+id/tvErrorOccurred"
+        <LinearLayout
+            android:id="@+id/llErrorLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:textAppearanceMedium"
+            android:orientation="vertical"
             android:layout_gravity="center"
-            android:gravity="center"
             android:visibility="gone"
-            android:text="@string/error_occurred"/>
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvErrorOccurred"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:text="@string/error_occurred"/>
+
+            <Button
+                android:id="@+id/btnRetry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/retry"/>
+        </LinearLayout>
 
     </android.support.design.widget.CoordinatorLayout>
 </layout>
