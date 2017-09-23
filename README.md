@@ -39,9 +39,8 @@ Currency List is stored on the device's local storage, sqlite in this case, but 
 - [Facebook Stetho (1.5.0)](http://facebook.github.io/stetho/)
 - [LeakCanary (1.5.4)](https://github.com/square/leakcanary)
 
-ps: There is currently an issue with proguard and leakcanary, so i have removed leakcanary dependency for the time being.
 
-###Build IDE
+###IDE Version
 
 Android Studio 3.0 Beta 6
 Build #AI-171.4333198, built on September 14, 2017
