@@ -43,8 +43,8 @@ Currency List is stored on the device's local storage, sqlite in this case, but 
 
 ### IDE Version
 
-Android Studio 3.0 Beta 6
-Build #AI-171.4333198, built on September 14, 2017
-JRE: 1.8.0_152-release-915-b01 x86_64
-JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
+Android Studio 3.0 Beta 6 <br>
+Build #AI-171.4333198, built on September 14, 2017 <br>
+JRE: 1.8.0_152-release-915-b01 x86_64 <br>
+JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o <br>
 Mac OS X 10.12.6
