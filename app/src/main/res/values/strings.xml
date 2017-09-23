@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MasterCardInterviewAssignment</string>
+    <string name="app_name">MC CurConv</string>
     <string name="endpoint">http://192.168.1.105:8080</string>
     <string name="currency_item_text">"%1$s - "</string>
     <string name="currency_db_name">currencies</string>
