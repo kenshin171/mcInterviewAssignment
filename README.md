@@ -10,13 +10,14 @@ Users can use this application and selected from a list of currency values and c
 
 The starting screen where the user has no selected any currencies will be like the below screenshot.
 
-![Home screen](https://github.com/kenshin171/mcInterviewAssignment/blob/master/images/device-2017-09-23-161135.png)
+<img src="https://github.com/kenshin171/mcInterviewAssignment/blob/master/images/device-2017-09-23-161135.png" width="400">
+
 
 ### Local Storage
 
 Currency List is stored on the device's local storage, sqlite in this case, but exchanges rates are not as exchange rates are quite volatile.
 
-![Home screen](https://github.com/kenshin171/mcInterviewAssignment/blob/master/images/device-2017-09-23-163737.png)
+<img src="https://github.com/kenshin171/mcInterviewAssignment/blob/master/images/device-2017-09-23-163737.png" width="400">
 
 
 ## Libraries Used
