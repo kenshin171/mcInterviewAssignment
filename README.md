@@ -41,7 +41,7 @@ Currency List is stored on the device's local storage, sqlite in this case, but 
 - [LeakCanary (1.5.4)](https://github.com/square/leakcanary)
 
 
-###IDE Version
+### IDE Version
 
 Android Studio 3.0 Beta 6
 Build #AI-171.4333198, built on September 14, 2017
