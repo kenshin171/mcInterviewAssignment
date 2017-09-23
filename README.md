@@ -1,10 +1,10 @@
 # Currency Converter
 
-##Application Description
+## Application Description
 
 Users can use this application and selected from a list of currency values and convert their desired figures to the currency the wan it to be converted to.
 
-##Assumptions Made
+## Assumptions Made
 
 ### Starting screen
 
