@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     app:cardUseCompatPadding="true"
                     app:cardCornerRadius="10dp"
-                    android:background="?selectableItemBackground"
+                    android:foreground="?selectableItemBackground"
                     android:clickable="@{iHaveCur == null}">
 
                     <TextView
@@ -154,7 +154,7 @@
                     android:id="@+id/cvWantCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?selectableItemBackground"
+                    android:foreground="?selectableItemBackground"
                     app:cardUseCompatPadding="true"
                     app:cardCornerRadius="10dp"
                     android:clickable="@{iWantCur == null}">
