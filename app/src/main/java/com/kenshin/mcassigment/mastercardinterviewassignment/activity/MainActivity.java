@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.evernote.android.state.State;
@@ -143,6 +144,12 @@ public class MainActivity extends BaseActivity {
                     }
                 });
 
+        RxView.clicks(binding.btnRetry)
+                .compose(provider.bindToLifecycle())
+                .subscribe(View -> {
+                    viewModel.getExchangeRates();
+                });
+
         binding.cdtHaveAmount.setDefaultLocale(Locale.US);
         binding.cdtWantAmount.setDefaultLocale(Locale.US);
 
@@ -183,6 +190,9 @@ public class MainActivity extends BaseActivity {
 
         viewModel.getiHaveWantExc().observe(this, iHaveWantExc -> {
 
+            binding.llErrorLayout.setVisibility(View.GONE);
+            binding.nsvMainContent.setVisibility(View.VISIBLE);
+
             if(iHaveWantExc != null) {
                 if(null != iHaveWantExc[0]) {
                     ExchangeResponse iHaveEx = iHaveWantExc[0];
@@ -220,7 +230,6 @@ public class MainActivity extends BaseActivity {
                     wantAmount = CommonUtility.roundParseRate(iHaveWantExc[0].getRate());
                     setHaveWantAmountQuietly();
                 }
-
             }
             else {
                 binding.tvHaveExchangeRate.setText("");
@@ -228,8 +237,29 @@ public class MainActivity extends BaseActivity {
 
                 binding.cdtHaveAmount.setVisibility(View.GONE);
                 binding.cdtWantAmount.setVisibility(View.GONE);
-                binding.clpbHaveLoading.setVisibility(View.VISIBLE);
-                binding.clpbHaveLoading.setVisibility(View.VISIBLE);
+
+                if(null != viewModel.getiHaveCur().getValue() && null != viewModel.getiWantCur().getValue()) {
+                    binding.clpbHaveLoading.setVisibility(View.VISIBLE);
+                    binding.clpbHaveLoading.setVisibility(View.VISIBLE);
+                }
+                else {
+                    binding.clpbHaveLoading.setVisibility(View.GONE);
+                    binding.clpbHaveLoading.setVisibility(View.GONE);
+                }
+            }
+
+        });
+
+        viewModel.getErrorNotifier().observe(this, error -> {
+
+            if(TextUtils.isEmpty(error)) {
+                binding.llErrorLayout.setVisibility(View.GONE);
+                binding.nsvMainContent.setVisibility(View.VISIBLE);
+            }
+            else {
+                binding.nsvMainContent.setVisibility(View.GONE);
+                binding.llErrorLayout.setVisibility(View.VISIBLE);
+                binding.tvErrorOccurred.setText(getString(R.string.error_occurred, error));
             }
 
         });

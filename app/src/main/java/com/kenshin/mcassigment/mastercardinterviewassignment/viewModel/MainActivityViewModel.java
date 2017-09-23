@@ -24,12 +24,14 @@ public class MainActivityViewModel extends ViewModel {
     private MutableLiveData<Currency> iWantCur;
     private MutableLiveData<ExchangeResponse[]> iHaveWantExc;
     private Disposable getExchangeRateDis;
+    private MutableLiveData<String> errorNotifier;
 
     public MainActivityViewModel(RetroFitService retroFitService) {
         this.retroFitService = retroFitService;
         this.iHaveCur = new MutableLiveData<>();
         this.iWantCur = new MutableLiveData<>();
         this.iHaveWantExc = new MutableLiveData<>();
+        this.errorNotifier = new MutableLiveData<>();
     }
 
     public MutableLiveData<Currency> getiHaveCur() {
@@ -42,6 +44,10 @@ public class MainActivityViewModel extends ViewModel {
 
     public MutableLiveData<ExchangeResponse[]> getiHaveWantExc() {
         return iHaveWantExc;
+    }
+
+    public MutableLiveData<String> getErrorNotifier() {
+        return errorNotifier;
     }
 
     public void getExchangeRates() {
@@ -61,6 +67,8 @@ public class MainActivityViewModel extends ViewModel {
             getExchangeRateDis = combined.subscribe(exchangeResponses -> {
 
                 iHaveWantExc.setValue(exchangeResponses);
+            }, error -> {
+                errorNotifier.setValue(error.getMessage());
             });
         }
         else {

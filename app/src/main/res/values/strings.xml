@@ -20,4 +20,5 @@
 
     <string name="select_have_cur">Touch here to select the currency you <b>have</b></string>
     <string name="currency_i_want">Touch here to select the currency you <b>want</b></string>
+    <string name="retry">Retry</string>
 </resources>

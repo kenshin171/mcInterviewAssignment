@@ -21,6 +21,7 @@
         <include layout="@layout/layout_toolbar" android:id="@+id/incToolbar"/>
 
         <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nsvMainContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" >
@@ -141,7 +142,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/tvHaveCtyCode"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"/>
+                            app:layout_constraintHorizontal_bias="0.9"/>
 
 
                     </android.support.constraint.ConstraintLayout>
@@ -258,13 +259,43 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/tvWantCtyCode"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"/>
+                            app:layout_constraintHorizontal_bias="0.9"/>
 
                     </android.support.constraint.ConstraintLayout>
 
                 </android.support.v7.widget.CardView>
 
             </LinearLayout>
+
         </android.support.v4.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/llErrorLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvErrorOccurred"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:text="@string/error_occurred"/>
+
+            <Button
+                android:id="@+id/btnRetry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/retry"/>
+
+
+        </LinearLayout>
+
     </android.support.design.widget.CoordinatorLayout>
 </layout>

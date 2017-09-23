@@ -92,7 +92,7 @@ public class SearchActivityViewModel extends ViewModel {
      * @param searchText String Search term
      */
     public void searchDB(@NotNull CharSequence searchText) {
-        if(null !=searchText && null != getCurrencyList().getValue()) {
+        if(null != getCurrencyList().getValue()) {
             searchListCallback = currencyDatabase.currencyDao().searchDB("%" + searchText + "%")
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
