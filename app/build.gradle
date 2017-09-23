@@ -53,11 +53,11 @@ android {
 
         debug {
             applicationIdSuffix '.debug'
-            shrinkResources true
+            shrinkResources false
             minifyEnabled true
-            useProguard true
+            useProguard false
             debuggable true
-            aaptOptions.cruncherEnabled = true
+            aaptOptions.cruncherEnabled = false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'shrinker-rules.pro'
         }
 
