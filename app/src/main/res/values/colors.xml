@@ -5,5 +5,5 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="image_window_background">#e0e2e5</color>
-
+    <color name="launcher_background">#f12212</color>
 </resources>
