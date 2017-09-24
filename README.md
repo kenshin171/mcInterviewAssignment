@@ -10,7 +10,7 @@ The currency api endpoint has been deployed on my home raspberrypi mini-server, 
 
 ### Starting screen
 
-The starting screen where the user has no selected any currencies will be like the below screenshot.
+The starting screen where the user has not selected any currencies will be like the below screenshot.
 
 <kbd><img src="https://github.com/kenshin171/mcInterviewAssignment/blob/master/images/device-2017-09-23-161135.png" width="400"></kbd>
 
