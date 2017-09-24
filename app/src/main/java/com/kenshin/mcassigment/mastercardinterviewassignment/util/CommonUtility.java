@@ -35,22 +35,4 @@ public class CommonUtility {
         return roundParseRate(calculated);
 
     }
-
-//    public static Locale localeLookUp(String countryName, String currencyCode) {
-//
-//        Locale l = Locale.US;
-//
-//        for (Locale locale : Locale.getAvailableLocales()) {
-//
-//            App.myLog('d',TAG, locale.getDisplayCountry());
-//
-//            if (locale.getDisplayCountry(Locale.US).equalsIgnoreCase(countryName) &&
-//                    currencyCode.toLowerCase().contains(locale.getCountry().toLowerCase())) {
-//               l = locale;
-//               break;
-//            }
-//        }
-//        return l;
-//    }
-
 }

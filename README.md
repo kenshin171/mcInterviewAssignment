@@ -4,6 +4,8 @@
 
 Users can use this application and selected from a list of currency values and convert their desired figures to the currency the wan it to be converted to.
 
+The currency api endpoint has been deployed on my home raspberrypi mini-server, so the application can be compiled and deployed as it is or you can just use the [apk](https://github.com/kenshin171/mcInterviewAssignment/blob/master/app-debug.apk)
+
 ## Assumptions Made
 
 ### Starting screen
